@@ -1,15 +1,15 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-add_action('admin_enqueue_scripts', 'motivar_functions_theme_enqueue_styles',20);
+add_action('admin_enqueue_scripts', 'motivar_functions_admin_enqueue_styles',20);
 
-function motivar_functions_enqueue_styles()
+function motivar_functions_admin_enqueue_styles()
 {
-    wp_enqueue_script('myscript', plugin_dir_url( __FILE__ ).'myscript.js', array() , array() , false);
-    wp_enqueue_style( 'admin_css', plugin_dir_url( __FILE__ )  . 'admin-style.css', true, '1.0.0' );
+    wp_enqueue_script('motivar-admin-myscript', plugin_dir_url( __FILE__ ).'myscript.js', array() , array() , false);
+    wp_enqueue_style( 'motivar-admin-css', plugin_dir_url( __FILE__ )  . 'admin-style.css', true, '1.0.0' );
     if (!is_super_admin())
 		{
-		wp_enqueue_style( 'editor_css', plugin_dir_url( __FILE__ )  . 'editor.css', true, '1.0.0' );
+		wp_enqueue_style( 'motivar-editor-css', plugin_dir_url( __FILE__ )  . 'editor.css', true, '1.0.0' );
 		}
 	}
 
