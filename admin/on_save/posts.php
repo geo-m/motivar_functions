@@ -2,8 +2,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-add_action( 'acf/save_post', 'sbp_save_acf', 20 );
-function sbp_save_acf( $post_id ) {
+add_action( 'acf/save_post', 'motivar_functions_save_acf', 20 );
+function motivar_functions_acf( $post_id ) {
  if ((!wp_is_post_revision($post_id) && 'auto-draft' != get_post_status($post_id) && 'trash' != get_post_status($post_id)))
 	 {
 	 	$post_typee=get_post_type($post_id);
