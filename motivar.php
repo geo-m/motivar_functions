@@ -6,6 +6,7 @@ Description: Hide unwanted texts for clients and more
 Version: 1.0
 Author: Giannopoulos Nikolaos
 Author URI: https://www.motivar.io
+Text Domain:       github-updater
 GitHub Plugin URI: https://github.com/gnnpls/motivar_functions
 GitHub Branch:     master
 */
