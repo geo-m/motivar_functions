@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
-add_menu_page( 'Gnnpls.com', 'Gnnpls.com', 'manage_options', 'gnn', 'motivar_functions_options' );
+add_menu_page( 'motivar.io', 'motivar.io', 'manage_options', 'gnn', 'motivar_functions_options' );
 
 function motivar_functions_options() {
 	if ( !current_user_can( 'manage_options' ) )  {

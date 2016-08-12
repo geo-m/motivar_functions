@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Motivar Admin
-Plugin URI: https://www.gnnpls.com
+Plugin URI: https://www.motivar.io
 Description: Dev Options for Custom Development in every theme
 Version: 1.0
 Author: Giannopoulos Nikolaos
-Author URI: https://www.gnnpls.com
+Author URI: https://www.motivar.io
 */
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -97,7 +97,7 @@ wp_enqueue_style('login-style', plugin_dir_url( __FILE__ ) . 'login_style.css',a
 
 }
 
-add_action('login_enqueue_scripts', 'my_custom_login',20);
+add_action('login_enqueue_scripts', 'motivar_functions_login',20);
 function motivar_functions_login_url() {
     return 'https://motivar.io';
     }
