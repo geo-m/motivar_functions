@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Motivar Admin
+Plugin Name: Simplify Admin Area & Functions
 Plugin URI: https://www.motivar.io
-Description: Dev Options for Custom Development in every theme
+Description: Hide unwanted texts for clients and more
 Version: 1.0
 Author: Giannopoulos Nikolaos
 Author URI: https://www.motivar.io
