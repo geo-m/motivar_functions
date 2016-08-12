@@ -6,6 +6,8 @@ Description: Dev Options for Custom Development in every theme
 Version: 1.0
 Author: Giannopoulos Nikolaos
 Author URI: https://www.motivar.io
+GitHub Plugin URI: https://github.com/gnnpls/motivar_functions
+GitHub Branch:     master
 */
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
