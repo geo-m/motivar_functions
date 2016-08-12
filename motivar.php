@@ -3,7 +3,7 @@
 Plugin Name: Simplify Admin Area & Functions
 Plugin URI: https://www.motivar.io
 Description: Hide unwanted texts for clients and run custom php codes and shortcodes
-Version: 1.0
+Version: 1.1
 Author: Giannopoulos Nikolaos
 Author URI: https://www.motivar.io
 Text Domain:       github-updater
