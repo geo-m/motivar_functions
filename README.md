@@ -13,4 +13,4 @@ Plugin is updated frequently.
 
 
 
-![Wordpress Admin Tools](./guest/media/motivar_logo.png)
+![Wordpress Admin Tools](./login/media/motivar_logo.png)
