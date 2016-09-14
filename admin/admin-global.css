@@ -1,0 +1,21 @@
+.post-type-portfolio #tagsdiv-portfolio_tags,.post-type-portfolio #be-page-builder,.post-type-portfolio #portfolio,.post-type-portfolio #header_hero_section,.post-type-portfolio #postexcerpt, .post-type-portfolio #mymetabox_revslider_0, .post-type-portfolio #page_portfolio_common,.post-type-portfolio #edit-slug-box,.post-type-portfolio #postimagediv
+{
+display:none !important;
+}
+
+/*create space for bar in admin*/
+#wpbody-content #dashboard-widgets .postbox-container
+{
+width: 80% !important;
+}
+
+
+
+@media screen and (max-width: 500px)
+{
+/*create space for bar in admin*/
+#wpbody-content #dashboard-widgets .postbox-container
+{
+width:100% !important;
+}
+}
