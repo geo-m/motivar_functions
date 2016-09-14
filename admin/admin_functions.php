@@ -55,7 +55,7 @@ global $wp_version;return(object) array('last_checked'=> time(),'version_checked
 }
 
 
-function motivar_functions_admin_enqueue_styles()
+function motivar_functions_admin_site_enqueue_styles()
 {
     wp_enqueue_script('motivar-admin-myscript', plugin_dir_url( __FILE__ ).'../../motivar_functions_child/admin/myscript.js', array() , array() , false);
     wp_enqueue_style( 'motivar-admin-css', plugin_dir_url( __FILE__ )  .'../../motivar_functions_child/admin/admin-style.css', true, '1.0.0' );
@@ -64,6 +64,19 @@ function motivar_functions_admin_enqueue_styles()
 		wp_enqueue_style( 'motivar-editor-css', plugin_dir_url( __FILE__ )  . '../../motivar_functions_child/admin/editor.css', true, '1.0.0' );
 		}
 	}
+
+
+function motivar_functions_admin_enqueue_styles()
+{
+    wp_enqueue_script('motivar-admin-global-script', plugin_dir_url( __FILE__ ).'admin-script.js', array() , array() , false);
+    wp_enqueue_style( 'motivar-admin-global', plugin_dir_url( __FILE__ )  .'admin-global.css', true, '1.0.0' );
+    if (!is_super_admin())
+		{
+		wp_enqueue_style( 'motivar-editor-global', plugin_dir_url( __FILE__ ) .'editor-global.css', true, '1.0.0' );
+		}
+	}
+
+
 
 
 
@@ -76,7 +89,7 @@ require_once($adm_path.'/on_save/media.php') ;
 require_once($adm_path.'/on_save/posts.php') ;
 require_once($adm_path.'/custom_db/register_tables.php') ;
 require_once($adm_path.'/user/registration.php') ;
-add_action('admin_enqueue_scripts', 'motivar_functions_admin_enqueue_styles',20);
+add_action('admin_enqueue_scripts', 'motivar_functions_admin_site_enqueue_styles',20);
 }
 
 
