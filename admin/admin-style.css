@@ -3,3 +3,8 @@
 display:none !important;
 }
 
+/*create space for bar in admin*/
+#wpbody-content #dashboard-widgets .postbox-container
+{
+width: 70% !important;
+}

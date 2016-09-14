@@ -52,7 +52,7 @@ require_once('on_save/media.php') ;
 
 /*remove notifications for other users*/
 add_action('init', 'motivar_functions_check_myuser');
-function motivar_functions_myuser()
+function motivar_functions_check_myuser()
 {
 if (!is_super_admin())
 {
@@ -61,7 +61,7 @@ add_filter('pre_site_transient_update_plugins','__return_null');
 add_filter('pre_option_update_core','__return_null');
 add_filter('pre_site_transient_update_core','__return_null');
 add_filter('pre_site_transient_update_themes','motivar_functions_core_updates');
-add_action('after_setup_theme','remove_core_updates');
+add_action('after_setup_theme','motivar_functions_core_updates');
 }
 }
 

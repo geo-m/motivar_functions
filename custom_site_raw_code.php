@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
- function slugify($text)
+ function motivar_functions_slugify($text)
 {
   // replace non letter or digits by -
   $text = preg_replace('~[^\pL\d]+~u', '-', $text);

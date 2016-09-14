@@ -8,7 +8,7 @@ function motivar_functions_acf( $post_id ) {
 	 {
 	 	$post_typee=get_post_type($post_id);
 	 	$changes=$types=array();
-	 	/*for changes in slug slugify */
+	 	/*for changes in slug motivar_functions_slugify */
 	 	switch ($post_typee) {
 	 		default:
 	 			break;
