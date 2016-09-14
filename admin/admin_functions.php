@@ -75,7 +75,7 @@ function motivar_functions_admin_enqueue_styles()
 		wp_enqueue_style( 'motivar-editor-global', plugin_dir_url( __FILE__ ) .'editor-global.css', true, '1.0.0' );
 		}
 	}
-motivar_functions_admin_enqueue_styles()
+add_action('admin_enqueue_scripts', 'motivar_functions_admin_enqueue_styles',20);
 
 
 
