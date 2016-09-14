@@ -11,7 +11,6 @@
 A simple plugin for advanced wordpress users (mostly developers) with a lot of handy functions to choose from and for clients. Run your own function on save, delete, restore and more. Add your own scripts and css styles for each page.
 Plugin is updated frequently.
 
-#1.3.2
-changes in gitgignore list by gnnpls
+
 
 ![Wordpress Admin Tools](./guest/media/motivar_logo.png)

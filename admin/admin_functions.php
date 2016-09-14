@@ -1,20 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-add_action('admin_enqueue_scripts', 'motivar_functions_admin_enqueue_styles',20);
-
-function motivar_functions_admin_enqueue_styles()
-{
-    wp_enqueue_script('motivar-admin-myscript', plugin_dir_url( __FILE__ ).'myscript.js', array() , array() , false);
-    wp_enqueue_style( 'motivar-admin-css', plugin_dir_url( __FILE__ )  . 'admin-style.css', true, '1.0.0' );
-    if (!is_super_admin())
-		{
-		wp_enqueue_style( 'motivar-editor-css', plugin_dir_url( __FILE__ )  . 'editor.css', true, '1.0.0' );
-		}
-	}
-
-
 /*change the footer text*/
+$adm_path=plugin_dir_path(__FILE__).'../../motivar_functions_child/admin';
+
 function motivar_functions_footer_admin () {
   echo "Powered by <a href='https://motivar.io/' target='_blank' title='Web Services Professionals'>Motivar.io</a>, ".date('Y');
 }
@@ -33,25 +22,15 @@ if (!is_super_admin())
 	{
 	remove_action( 'admin_notices', 'update_nag', 3 );
 	}
-else
-	{
-	require_once( 'super_user.php') ;
-	require_once( 'custom_db/register_tables.php') ;
-	require_once('user/registration.php') ;
-	}
 }
 
-require_once('on_save/posts.php') ;
-require_once('meta/posts.php') ;
-require_once('meta/taxonomies.php') ;
-require_once('on_save/taxonomies.php') ;
-require_once('on_save/media.php') ;
+
 
 /*add information page*/
 
 
 /*remove notifications for other users*/
-add_action('init', 'motivar_functions_check_myuser');
+add_action('admin_init', 'motivar_functions_check_myuser');
 function motivar_functions_check_myuser()
 {
 if (!is_super_admin())
@@ -63,6 +42,10 @@ add_filter('pre_site_transient_update_core','__return_null');
 add_filter('pre_site_transient_update_themes','motivar_functions_core_updates');
 add_action('after_setup_theme','motivar_functions_core_updates');
 }
+else
+{
+	require_once( 'super_user.php') ;
+}
 }
 
 
@@ -70,4 +53,33 @@ function motivar_functions_core_updates(){
 global $wp_version;return(object) array('last_checked'=> time(),'version_checked'=> $wp_version,);
  add_action('init', create_function('$a',"remove_action( 'init', 'wp_version_check' );"),2);
 }
+
+
+function motivar_functions_admin_enqueue_styles()
+{
+    wp_enqueue_script('motivar-admin-myscript', plugin_dir_url( __FILE__ ).'../../motivar_functions_child/admin/myscript.js', array() , array() , false);
+    wp_enqueue_style( 'motivar-admin-css', plugin_dir_url( __FILE__ )  .'../../motivar_functions_child/admin/admin-style.css', true, '1.0.0' );
+    if (!is_super_admin())
+		{
+		wp_enqueue_style( 'motivar-editor-css', plugin_dir_url( __FILE__ )  . '../../motivar_functions_child/admin/editor.css', true, '1.0.0' );
+		}
+	}
+
+
+
+if (file_exists($adm_path)) {
+	/*check if exist child folder*/
+require_once($adm_path.'/meta/posts.php') ;
+require_once($adm_path.'/meta/taxonomies.php') ;
+require_once($adm_path.'/on_save/taxonomies.php') ;
+require_once($adm_path.'/on_save/media.php') ;
+require_once($adm_path.'/on_save/posts.php') ;
+require_once($adm_path.'/custom_db/register_tables.php') ;
+require_once($adm_path.'/user/registration.php') ;
+add_action('admin_enqueue_scripts', 'motivar_functions_admin_enqueue_styles',20);
+}
+
+
+
+
 
