@@ -13,4 +13,8 @@ Plugin is updated frequently.
 
 
 
+#1.3.6
+Fixes for admin quick scripts
+
+
 ![Wordpress Admin Tools](./login/media/motivar_logo.png)

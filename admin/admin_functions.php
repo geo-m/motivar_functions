@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit;
 $adm_path=plugin_dir_path(__FILE__).'../../motivar_functions_child/admin';
 
 function motivar_functions_footer_admin () {
-  echo "Powered by <a href='https://motivar.io/' target='_blank' title='Web Services Professionals'>Motivar.io</a>, ".date('Y');
+  echo "Powered by <a href='https://motivar.io/' target='_blank' title='Web Services Professionals Corfu'>Motivar.io</a>, ".date('Y');
 }
 
 add_filter('admin_footer_text', 'motivar_functions_footer_admin');
@@ -21,6 +21,10 @@ function motivar_functions_wphidenag() {
 if (!is_super_admin())
 	{
 	remove_action( 'admin_notices', 'update_nag', 3 );
+	}
+	else
+	{
+		require_once( 'super_user.php') ;
 	}
 }
 
@@ -42,16 +46,13 @@ add_filter('pre_site_transient_update_core','__return_null');
 add_filter('pre_site_transient_update_themes','motivar_functions_core_updates');
 add_action('after_setup_theme','motivar_functions_core_updates');
 }
-else
-{
-	require_once( 'super_user.php') ;
-}
 }
 
 
 function motivar_functions_core_updates(){
 global $wp_version;return(object) array('last_checked'=> time(),'version_checked'=> $wp_version,);
  add_action('init', create_function('$a',"remove_action( 'init', 'wp_version_check' );"),2);
+
 }
 
 
