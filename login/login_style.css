@@ -6,7 +6,7 @@
 }
 body
 {
-background: #006D84 !important;
+background: #21293B !important;
 min-height: 100% !important;
 height: auto !important;
 }
@@ -109,7 +109,7 @@ height: auto !important;
 
 .login #backtoblog a, .login #nav a
 {
-    color:white !important;
+    color:#21293B !important;
 }
 
 .login form {

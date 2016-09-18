@@ -1,8 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
-add_menu_page( 'motivar.io', 'motivar.io', 'manage_options', 'gnn', 'motivar_functions_options' );
-
-function motivar_functions_options() {
+add_menu_page( 'Admin Tools', 'Admin Tools', 'manage_options', 'wp_admin_tools', 'motivar_admin_functions_options');
+function motivar_admin_functions_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
