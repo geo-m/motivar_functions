@@ -3,8 +3,8 @@
 Plugin Name: Wordpress Admin tools
 Plugin URI: https://www.motivar.io
 Description: Hide unwanted texts for clients and run custom php codes and shortcodes (for developers mostly)
-Version: 1.3.7
-Author: Giannopoulos Nikolaos
+Version: 1.3.8
+Author: Giannopoulos Nikolaos, Anastasiou Kwnstantinos
 Author URI: https://www.motivar.io
 Text Domain:       github-updater
 GitHub Plugin URI: https://github.com/gnnpls/motivar_functions
@@ -28,15 +28,39 @@ if (is_admin()) {
 require_once('admin/admin_functions.php');
 /*end of gloabl things*/
 
-    function motivar_functions_theme_enqueue_styles()
+    function motivar_dynamic_child_scripts()
     {
-        wp_enqueue_style('motivar-design', plugin_dir_url(__FILE__) . '../motivar_functions_child/guest/mystyle.css', array(), '', 'all');
-        wp_enqueue_script('motivar-myscript', plugin_dir_url(__FILE__) . '../motivar_functions_child/guest/myscript.js', array(), array(), true);
+
+         $path=plugin_dir_path(__FILE__).'../motivar_functions_child/guest/';
+            /*check which dynamic scripts should be loaded*/
+            if (file_exists($path))
+                {
+                $paths=array('js','css');
+                foreach ($paths as $kk)
+                {
+                    if (!empty(glob($path.'*.'.$kk)))
+                    {
+                        foreach (glob($path.'*.'.$kk) as $filename) {
+                            switch ($kk) {
+                                case 'js':
+                                    wp_enqueue_script('motivar-design-'.basename($filename), plugin_dir_url(__FILE__) . '../motivar_functions_child/guest/'.basename($filename), array(), array(), true);
+                                    break;
+                                default:
+                                    wp_enqueue_style('motivar-design-'.basename($filename), plugin_dir_url(__FILE__) . '../motivar_functions_child/guest/'.basename($filename), array(), '', 'all');
+                                    break;
+                            }
+                            }
+
+                    }
+                    }
+
+                }
     }
 
 
 /*check if motivar child exists*/
 if (file_exists($path)) {
+    require_once($path.'/custom_site_raw_code.php');
     //custom shortcodes
     require_once($path.'/guest/custom_shortcodes.php');
     /*custom post_types*/
@@ -45,7 +69,7 @@ if (file_exists($path)) {
     require_once($path.'/email_functions.php');
     require_once($path.'/cron_functions.php');
     require_once($path.'/custom_widgets.php');
-    add_action('wp_enqueue_scripts', 'motivar_functions_theme_enqueue_styles', 20);
+    add_action('wp_enqueue_scripts', 'motivar_dynamic_child_scripts', 20);
 }
 else
 {

@@ -13,6 +13,9 @@ Plugin is updated frequently.
 
 
 
+#1.3.7
+Adjustments for css and dynamic php files
+
 #1.3.6
 Fixes for admin quick scripts
 
