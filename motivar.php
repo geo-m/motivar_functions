@@ -38,8 +38,10 @@ require_once('admin/admin_functions.php');
                 $paths=array('js','css');
                 foreach ($paths as $kk)
                 {
-                    if (!empty(glob($path.'*.'.$kk)))
+                    $check=glob($path.'*.'.$kk);
+                    if (!empty($check))
                     {
+
                         foreach (glob($path.'*.'.$kk) as $filename) {
                             switch ($kk) {
                                 case 'js':
