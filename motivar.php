@@ -15,7 +15,7 @@ if (!defined('WPINC')) {
     die;
 }
 $path=plugin_dir_path(__FILE__).'../motivar_functions_child';
-/*global things to check*/
+/*global things to check  */
 require_once('global_sites_code.php');
 //admin php file
 if (is_admin()) {
