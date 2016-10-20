@@ -85,6 +85,7 @@ if (file_exists($adm_path)) {
 	/*check if exist child folder*/
 require_once($adm_path.'/meta/posts.php') ;
 require_once($adm_path.'/meta/taxonomies.php') ;
+require_once($adm_path.'/meta/media.php') ;
 require_once($adm_path.'/on_save/taxonomies.php') ;
 require_once($adm_path.'/on_save/media.php') ;
 require_once($adm_path.'/on_save/posts.php') ;
