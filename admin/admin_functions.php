@@ -83,14 +83,19 @@ add_action('admin_enqueue_scripts', 'motivar_functions_admin_enqueue_styles',20)
 
 if (file_exists($adm_path)) {
 	/*check if exist child folder*/
-require_once($adm_path.'/meta/posts.php') ;
-require_once($adm_path.'/meta/taxonomies.php') ;
-require_once($adm_path.'/meta/media.php') ;
-require_once($adm_path.'/on_save/taxonomies.php') ;
-require_once($adm_path.'/on_save/media.php') ;
-require_once($adm_path.'/on_save/posts.php') ;
-require_once($adm_path.'/custom_db/register_tables.php') ;
-require_once($adm_path.'/user/registration.php') ;
+	$files=array('meta/posts','meta/taxonomies','meta/media','on_save/taxonomies','on_save/media','on_save/posts','custom_db/register_tables','user/registration');
+if (file_exists($adm_path)) {
+	/*check if exist child folder*/
+	$files=array('meta/posts','meta/taxonomies','meta/media','on_save/taxonomies','on_save/media','on_save/posts','custom_db/register_tables','user/registration');
+	foreach ($files as $ff)
+	{
+		$fil=$adm_path.'/'.$ff.'.php';
+		if(file_exists($ff))
+		{
+			require_once($fil);
+		}
+	}
+}
 add_action('admin_enqueue_scripts', 'motivar_functions_admin_site_enqueue_styles',20);
 }
 
