@@ -7,7 +7,7 @@ function motivar_admin_functions_options() {
 	}
 global $current_user;
 $msg=$cls='';
-$vars=array(array('debug',0,'Enable Debug Mode'),array('admin_only',0,'Only Admins Can See the page'),array('google',1,'Google Analytics'),array('hotjar',1,'Hotjar Analytics'));
+$vars=array(array('debug',0,'Enable Debug Mode'),array('admin_only',0,'Only Admins Can See the page'),array('map_key',2,'Google Maps Key'),array('google',1,'Google Analytics'),array('hotjar',1,'Hotjar Analytics'));
 
 if (isset($_POST['post_g_options']) && wp_verify_nonce($_POST['post_g_options'], 'motivar_functions_user_'.$current_user->ID))
 	{
@@ -17,16 +17,19 @@ if (isset($_POST['post_g_options']) && wp_verify_nonce($_POST['post_g_options'],
 			{
 			foreach ($vars as $var)
 				{
-					if ($var[1]==1)
-					{
-					if (strpos($key,$var[0]))
-						{
-						$value=str_replace("\n",' ',$value);
-						$value=stripslashes(esc_js( trim($value)));
-						$value=base64_encode($value);
-						}
-					update_option($key,$value);
+					switch ($var[1]) {
+						case 1:
+						if (strpos($key,$var[0]))
+							{
+							$value=str_replace("\n",' ',$value);
+							$value=stripslashes(esc_js( trim($value)));
+							$value=base64_encode($value);
+							}
+						break;
+						default:
+							break;
 					}
+					update_option($key,$value);
 				if (!isset($_POST['motivar_functions_'.$var[0]]))
 					{
 					delete_option('motivar_functions_'.$var[0]);
@@ -133,20 +136,26 @@ $msg.='<div class="wrap"><h2>Basic Options</h2><form method="POST" action="">
 foreach ($vars as $var)
 	{
 	$msg.='<tr valign="top"><th scope="row"><label for="motivar_functions_'.$var[0].'">'.ucfirst($var[2]).'</label></th><td>';
-	if ($var[1]==0)
-		{
+	$option=get_option('motivar_functions_'.$var[0]);
+	switch ($var[1]) {
+		case 0:
 			$cls='';
-			if (get_option('motivar_functions_'.$var[0])==1)
+			if ($option==1)
 			{
 			$cls="checked";
 			}
 
 		 $msg.='<input type="checkbox" name="motivar_functions_'.$var[0].'" id="motivar_functions_'.$var[0].'" value="1" '.$cls.'>';
-		}
-	else if ($var[1]==1)
-		{
-		$msg.='<textarea name="motivar_functions_'.$var[0].'" id="motivar_functions_'.$var[0].'" rows="8" cols="50">'.base64_decode(get_option('motivar_functions_'.$var[0])).'</textarea>';
-		}
+			break;
+		case 1:
+		$msg.='<textarea name="motivar_functions_'.$var[0].'" id="motivar_functions_'.$var[0].'" rows="8" cols="50">'.base64_decode($option).'</textarea>';
+		break;
+		case 2:
+		$msg.='<input type="text" name="motivar_functions_'.$var[0].'" id="motivar_functions_'.$var[0].'" value="'.$option.'" />';
+		default:
+			# code...
+			break;
+	}
 	$msg.='</td></tr>';
 	}
 $msg.=wp_nonce_field( 'motivar_functions_user_'.$current_user->ID,'post_g_options').'</table><p><input type="submit" value="Save" class="button-primary"/></p><br><hr></form>';

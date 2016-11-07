@@ -1,5 +1,30 @@
-#menu-comments, #toplevel_page_vc-welcome,#menu-tools,#wp-admin-bar-wp-logo,#wp-admin-bar-comments,#wp-admin-bar-new-estate_agent,#commentsdiv, #advanced-sortables,#postexcerpt, #commentstatusdiv,#formatdiv.postbox,#tagsdiv-post_tag.postbox,.post-type-clients #postdivrich.postarea,#menu-comments,#menu-media,#menu-pages,#menu-appearance,#menu-plugins,#menu-tools,#menu-settings,#toplevel_page_edit-post_type-acf-field-group,#toplevel_page_revisr,#toplevel_page_gnn,#menu-users,.form-field.term-slug-wrap,.form-field.term-parent-wrap,.form-field.term-description-wrap,#wp-admin-bar-new-post, #wp-admin-bar-new-media, #wp-admin-bar-new-page
+#menu-comments, #toplevel_page_vc-welcome,#menu-tools,#wp-admin-bar-wp-logo,#wp-admin-bar-comments,#wp-admin-bar-new-estate_agent,#commentsdiv, #advanced-sortables,#postexcerpt, #commentstatusdiv,#formatdiv.postbox,#tagsdiv-post_tag.postbox,.post-type-clients #postdivrich.postarea,#menu-comments,#menu-pages,#menu-appearance,#menu-plugins,#menu-tools,#menu-settings,#toplevel_page_edit-post_type-acf-field-group,#toplevel_page_revisr,#toplevel_page_gnn,#menu-users,.form-field.term-slug-wrap,.form-field.term-parent-wrap,.form-field.term-description-wrap,#wp-admin-bar-new-post, #wp-admin-bar-new-media, #wp-admin-bar-new-page
 {
 	display:none !important;
 }
 
+.o-half {
+    width: 47%;
+    margin-right: 1%;
+    display: inline-block;
+}
+
+
+.o-third {
+    width: 32%;
+    margin-right: 1%;
+    display: inline-block;
+}
+
+
+@media screen and (max-width: 380px) {
+    .o-half {
+        width: 98%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .o-third {
+        width: 48%;
+    }
+}
