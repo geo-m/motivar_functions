@@ -58,7 +58,17 @@ global $wp_version;return(object) array('last_checked'=> time(),'version_checked
 
 function motivar_functions_admin_site_enqueue_styles()
 {
+	$level = array();
+	if (is_super_admin()){
+		$level['user'] = 'admin';
+	}
+	else {
+		$level['user'] = 'editor';
+
+	}
     wp_enqueue_script('motivar-admin-myscript', plugin_dir_url( __FILE__ ).'../../motivar_functions_child/admin/myscript.js', array() , array() , false);
+    wp_localize_script( 'motivar-admin-myscript', 'sbp_user_level', $level );
+
     wp_enqueue_style( 'motivar-admin-css', plugin_dir_url( __FILE__ )  .'../../motivar_functions_child/admin/admin-style.css', true, '1.0.0' );
     if (!is_super_admin())
 		{
@@ -95,12 +105,8 @@ if (file_exists($adm_path)) {
 	add_action('admin_enqueue_scripts', 'motivar_functions_admin_site_enqueue_styles',20);
 }
 
-if (get_option('motivar_functions_map_key')) {
-add_action('acf/init', 'my_acf_init');
-}
 
 
-function my_acf_init() {
-acf_update_setting('google_api_key',get_option('motivar_functions_map_key'));
-}
+
+
 
