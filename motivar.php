@@ -7,7 +7,7 @@ Version: 1.3.12
 Author: Giannopoulos Nikolaos, Anastasiou Kwnstantinos
 Author URI: https://www.motivar.io
 Text Domain:       github-updater
-GitHub Plugin URI: https://github.com/gnnpls/motivar_functions
+GitHub Plugin URI: https://github.com/Motivar/motivar_functions
 GitHub Branch:     master
 */
 // If this file is called directly, abort.

@@ -12,7 +12,6 @@
 #tagsdiv-post_tag.postbox,
 .post-type-clients #postdivrich.postarea,
 #menu-comments,
-#menu-media,
 #menu-appearance,
 #menu-plugins,
 #menu-tools,
@@ -25,7 +24,6 @@
 .form-field.term-parent-wrap,
 .form-field.term-description-wrap,
 #wp-admin-bar-new-post,
-#wp-admin-bar-new-media,
 #wp-admin-bar-new-page {
     display: none !important;
 }

@@ -91,6 +91,7 @@ add_action('admin_enqueue_scripts', 'motivar_functions_admin_enqueue_styles',20)
 
 
 
+
 if (file_exists($adm_path)) {
 	/*check if exist child folder*/
 	$files=array('meta/posts','meta/taxonomies','meta/media','on_save/taxonomies','on_save/media','on_save/posts','custom_db/register_tables','user/registration');
@@ -103,6 +104,15 @@ if (file_exists($adm_path)) {
 		}
 	}
 	add_action('admin_enqueue_scripts', 'motivar_functions_admin_site_enqueue_styles',20);
+}
+
+if (get_option('motivar_functions_map_key')) {
+add_action('acf/init', 'my_acf_init');
+}
+
+
+function my_acf_init() {
+acf_update_setting('google_api_key',get_option('motivar_functions_map_key'));
 }
 
 
