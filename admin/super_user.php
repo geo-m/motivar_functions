@@ -1,3 +1,4 @@
+
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 add_menu_page( 'Admin Tools', 'Admin Tools', 'manage_options', 'wp_admin_tools', 'motivar_admin_functions_options');
@@ -7,7 +8,7 @@ function motivar_admin_functions_options() {
 	}
 global $current_user;
 $msg=$cls='';
-$vars=array(array('debug',0,'Enable Debug Mode'),array('admin_only',0,'Only Admins Can See the page'),array('map_key',2,'Google Maps Key'),array('google',1,'Google Analytics'),array('hotjar',1,'Hotjar Analytics'));
+$vars=array(array('debug',0,'Enable Debug Mode'),array('admin_only',0,'Only Admins Can See the page'),array('map_key',2,'Google Maps Key'),array('google',1,'Google Analytics'),array('hotjar',1,'Hotjar Analytics'),array('mcp_key',2,'Mailchimp Api Key'),array('mcp_list_id',2,'Mailchimp List Id'), array('mcp_related_post',2,'Post Type Related to Mailchimp'));
 
 if (isset($_POST['post_g_options']) && wp_verify_nonce($_POST['post_g_options'], 'motivar_functions_user_'.$current_user->ID))
 	{
