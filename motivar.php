@@ -3,7 +3,7 @@
 Plugin Name: Wordpress Admin tools
 Plugin URI: https://www.motivar.io
 Description: Hide unwanted texts for clients and run custom php codes and shortcodes (for developers mostly)
-Version: 1.3.13
+Version: 1.3.14
 Author: Giannopoulos Nikolaos, Anastasiou Kwnstantinos
 Author URI: https://www.motivar.io
 Text Domain:       github-updater
@@ -14,6 +14,7 @@ GitHub Branch:     master
 if (!defined('WPINC')) {
     die;
 }
+
 $path=plugin_dir_path(__FILE__).'../motivar_functions_child';
 /*global things to check*/
 require_once('global_sites_code.php');
@@ -104,8 +105,21 @@ function motivar_functions_redirect()
     if ($pagenow != 'wp-login.php' && !is_user_logged_in()) {
         auth_redirect();
     }
+
+    //function to disable access to frontend for user
+    if (!is_super_admin())
+    {
+    if (get_option('motivar_functions_debug'))
+       {
+        $url=url();
+       if (!(strpos($url, 'wp-admin') !== false)) {
+            header( "Location: ".admin_url());
+        }
+    }
+
 }
 
+}
 
 
 
@@ -172,3 +186,15 @@ function motivar_functions_remove_version()
     return '';
 }
 add_filter('the_generator', 'motivar_functions_remove_version');
+
+
+
+
+function url(){
+  return sprintf(
+    "%s://%s%s",
+    isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+    $_SERVER['SERVER_NAME'],
+    $_SERVER['REQUEST_URI']
+  );
+}
