@@ -21,8 +21,6 @@
 #toplevel_page_gnn,
 #menu-users,
 .form-field.term-slug-wrap,
-.form-field.term-parent-wrap,
-.form-field.term-description-wrap,
 #wp-admin-bar-new-post,
 #wp-admin-bar-new-page {
     display: none !important;
