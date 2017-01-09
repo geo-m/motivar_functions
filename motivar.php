@@ -159,7 +159,7 @@ function motivar_functions_login_title()
     return "Web Services Corfu";
 }
 add_filter('login_headerurl', 'motivar_functions_login_url');
-add_filter('login_headertitle', 'motivar_functionsp_login_title');
+add_filter('login_headertitle', 'motivar_functions_login_title');
 
 
 /* Hide WP version strings from scripts and styles
