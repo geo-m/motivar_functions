@@ -7,7 +7,6 @@ add_action('delete_term', 'custom_functions_delete');
 
 function custom_functions_update($term_id)
 {
-
 if (isset($_POST['taxonomy']))
 	{
 		$name = isset($_POST['name']) ? $_POST['name'] : '';
