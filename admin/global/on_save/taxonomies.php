@@ -1,11 +1,11 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_action('create_term','custom_functions_update');
-add_action('edit_term', 'custom_functions_update');
-add_action('delete_term', 'custom_functions_delete');
+add_action('create_term','motivar_functions_update');
+add_action('edit_term', 'motivar_functions_update');
+add_action('delete_term', 'motivar_functions_update');
 
-function custom_functions_update($term_id)
+function motivar_functions_update($term_id)
 {
 if (isset($_POST['taxonomy']))
 	{
