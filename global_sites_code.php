@@ -275,3 +275,17 @@ array("eh","Western Sahara"),
 array("ye","Yemen"),
 array("zm","Zambia"));
 }
+
+
+
+//function to get names from acf-fields
+function motivar_get_acf_field_info_custom($name)
+{
+global $wpdb;
+$results = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT post_name FROM $wpdb->posts WHERE post_excerpt=%s AND post_status=%s",$name, 'publish' ));
+if (!empty($results))
+    {
+       $key=$results[0]->post_name;
+       return get_field_object($key);
+    }
+}
