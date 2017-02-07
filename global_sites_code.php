@@ -29,13 +29,26 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 }
 
 
+
 /* change slug*/
-function motivar_functions_update_post($id,$changes,$types)
+function motivar_functions_update_post($id,$changes,$types, $flag)
 {
-	/*id, array('post_title'=>$title) */
-	global $wpdb;
-	$wpdb->update($wpdb->posts,$changes , array(
-		  'ID' => $id) ,$types , array( '%d'));
+  /*id, array('post_title'=>$title) */
+  global $wpdb;
+  switch ($flag) {
+    case '1':
+      $wpdb->update($wpdb->posts,$changes , array(
+      'ID' => $id) ,$types , array( '%d'));
+      break;
+    case '2':
+      $wpdb->update($wpdb->terms,$changes , array(
+      'term_id' => $id) ,$types , array( '%d'));
+      break;
+    default:
+      # code...
+      break;
+  }
+
 
 }
 

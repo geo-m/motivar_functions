@@ -3,6 +3,8 @@ if (!defined('ABSPATH')) exit;
 
 /*change the footer text*/
 $adm_path=plugin_dir_path(__FILE__).'../../motivar_functions_child/admin';
+$global_adm_path = plugin_dir_path(__FILE__);
+
 
 function motivar_functions_footer_admin () {
   echo "Powered by <a href='https://motivar.io/' target='_blank' title='Web Services Professionals Corfu'>Motivar.io</a>, ".date('Y');
@@ -91,7 +93,17 @@ add_action('admin_enqueue_scripts', 'motivar_functions_admin_enqueue_styles',20)
 
 
 
-
+if (file_exists($global_adm_path)){
+	$global_files = array('global/on_save/posts','global/on_save/taxonomies');
+		foreach ($global_files as $ff)
+	{
+		$fil=$global_adm_path.'/'.$ff.'.php';
+		if(file_exists($fil))
+		{
+			require_once($fil);
+		}
+	}
+}
 if (file_exists($adm_path)) {
 	/*check if exist child folder*/
 	$files=array('meta/posts','meta/taxonomies','meta/media','on_save/taxonomies','on_save/media','on_save/posts','custom_db/register_tables','user/registration');
@@ -117,6 +129,36 @@ acf_update_setting('google_api_key',get_option('motivar_functions_map_key'));
 
 
 
+function motivar_save_client_to_mailchimp($post_id, $contact_type)
+{
+	$industry = get_the_terms($post_id, 'mr_industry');
+	
+	$mcp_path = realpath(dirname(__FILE__) . '/../../../motivar_functions/admin/');
+    require_once ($mcp_path.'/MCAPI.class.php');
+    require_once ($mcp_path.'/config.inc.php');
+    $api         = new MCAPI($apikey);
+    $batch[]     = array(
+        'EMAIL' => get_field('client_email'),
+        'NAME' => get_field('client_name'),
+        'SURNAME' => get_field('client_surname'),
+        'LAN' => strtoupper(get_field('client_language')),
+        'AGE' => get_field('client_age'),
+        'GENDER' => get_field('client_genre'),
+        'INDUSTRY' => $industry[0]->name,
+        'CONTACTYPE' => $contact_type
+   		);
+
+    $optin       = false; //yes, send optin emails
+    $up_exist    = true; // yes, update currently subscribed users
+    $replace_int = false; // no, add interest, don't replace
+    $vals        = $api->listBatchSubscribe($listId, $batch, $optin, $up_exist, $replace_int);
+    if ($api->errorCode) {
+        echo "Batch Subscribe failed!\n";
+        echo "code:" . $api->errorCode . "\n";
+        echo "msg :" . $api->errorMessage . "\n";
+    } else {
+    }
+}
 
 
 
