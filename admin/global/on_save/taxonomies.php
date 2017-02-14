@@ -9,7 +9,7 @@ function motivar_functions_update($term_id)
 {
 if (isset($_POST['taxonomy']))
 	{
-		$name = isset($_POST['name']) ? $_POST['name'] : '';
+		$name = isset($_POST['name']) ? $_POST['name'] : $_POST['tag-name'];
         $changes=$types=array();
         $flag = 2;
 
