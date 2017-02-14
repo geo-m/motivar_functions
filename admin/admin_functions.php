@@ -132,7 +132,7 @@ acf_update_setting('google_api_key',get_option('motivar_functions_map_key'));
 function motivar_save_client_to_mailchimp($post_id, $contact_type)
 {
 	$industry = get_the_terms($post_id, 'mr_industry');
-	
+
 	$mcp_path = realpath(dirname(__FILE__) . '/../../../motivar_functions/admin/');
     require_once ($mcp_path.'/MCAPI.class.php');
     require_once ($mcp_path.'/config.inc.php');
