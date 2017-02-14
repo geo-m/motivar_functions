@@ -1,11 +1,10 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_action('create_term','motivar_functions_update');
-add_action('edit_term', 'motivar_functions_update');
-add_action('delete_term', 'motivar_functions_update');
+add_action('create_term','motivar_global_term_update');
+add_action('edit_term', 'motivar_global_term_update');
 
-function motivar_functions_update($term_id)
+function motivar_global_term_update($term_id)
 {
 if (isset($_POST['taxonomy']))
 	{
@@ -31,10 +30,6 @@ if (isset($_POST['taxonomy']))
 
 
 	}
-}
-function custom_functions_delete($term_id)
-{
-
 }
 
 
