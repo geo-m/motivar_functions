@@ -1,12 +1,10 @@
 #login h1 a {
-    background-image: url('media/logo.png') !important;
     width: 100%;
     background-size: contain;
     margin-bottom: 100px;
 }
 
 body {
-    background: #21293B !important;
     min-height: 100% !important;
     height: auto !important;
 }
@@ -104,10 +102,7 @@ body {
     font-size: 25px;
 }
 
-.login #backtoblog a,
-.login #nav a {
-    color: #308293 !important;
-}
+
 
 .login form {
     padding: 26px 24px;

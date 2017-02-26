@@ -3,7 +3,7 @@
 Plugin Name: Wordpress Admin tools
 Plugin URI: https://www.motivar.io
 Description: Hide unwanted texts for clients and run custom php codes and shortcodes (for developers mostly)
-Version: 1.3.21.5
+Version: 1.3.22
 Author: Giannopoulos Nikolaos, Anastasiou Kwnstantinos
 Author URI: https://www.motivar.io
 Text Domain:       github-updater
@@ -150,18 +150,40 @@ function motivar_functions_login()
 {
     wp_enqueue_style('login-style', plugin_dir_url(__FILE__) . 'login/login_style.css', array(), '', 'all');
 
+$url_color=get_option('motivar_functions_motivar_login_color_url') ?: '#308293';
+$img=get_option('motivar_functions_motivar_login_bcg') ?: 'media/logo.png';
+$bcg_color=get_option('motivar_functions_motivar_login_color') ?: '#21293B';
+
+$content='<style type="text/css">
+#login h1 a {
+    background-image: url('.$img.') !important;
+}
+body
+{
+background: '.$bcg_color.' !important;
+}
+
+.login #backtoblog a,
+.login #nav a {
+    color: '.$url_color.' !important;
+}
+
+</style>';
+echo $content;
+
 }
 
 add_action('login_enqueue_scripts', 'motivar_functions_login', 20);
 function motivar_functions_login_url()
 {
-    return 'https://motivar.io';
+    $link=get_option('motivar_functions_motivar_login_url') ?: 'https://motivar.io';
+    return $link;
 }
 function motivar_functions_login_title()
 {
-    return "Web Services Corfu";
+    $alt=get_option('motivar_functions_motivar_login_alt') ?: 'Web Services Corfu Web Agency';
+    return $alt;
 }
-
 add_filter('login_headerurl', 'motivar_functions_login_url');
 add_filter('login_headertitle', 'motivar_functions_login_title');
 
