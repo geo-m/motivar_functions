@@ -14,6 +14,11 @@ body {
     width: 100%;
 }
 
+#login h1 a {
+    background-image: url('media/logo.png');
+}
+
+
 #loginform,
 #loginform p,
 #login h1 a,
