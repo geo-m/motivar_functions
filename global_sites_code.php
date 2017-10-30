@@ -302,3 +302,36 @@ if (!empty($results))
        return get_field_object($key);
     }
 }
+
+
+
+
+
+//admin php file
+if(class_exists('acf')){
+if (is_admin())
+{
+    add_filter('acf/settings/save_json', 'motivar_acf_json_save_point');
+    add_filter('acf/settings/load_json', 'motivar_acf_json_load_point');
+}
+function motivar_acf_json_save_point( $path ) {
+  $pathh = plugin_dir_path(__FILE__).'../motivar_functions_child/fields/';
+    if (file_exists($pathh))
+    {
+      $path=$pathh;
+    }
+
+    return $path;
+}
+function motivar_acf_json_load_point( $paths ) {
+  $pathh=plugin_dir_path(__FILE__).'../motivar_functions_child/fields/';
+  if (file_exists($pathh))
+  {
+        unset($paths[0]);
+    $paths[] = $pathh;
+  }
+
+    return $paths;
+}
+
+}
