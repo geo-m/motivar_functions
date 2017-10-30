@@ -23,7 +23,7 @@ if (isset($_POST['post_g_options']) && wp_verify_nonce($_POST['post_g_options'],
 						if (strpos($key,$var[0]))
 							{
 							$value=str_replace("\n",' ',$value);
-							$value=stripslashes(esc_js( trim($value)));
+							$value=stripslashes(trim($value));
 							$value=base64_encode($value);
 							}
 						break;
