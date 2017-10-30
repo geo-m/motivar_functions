@@ -162,27 +162,3 @@ function motivar_save_client_to_mailchimp($post_id, $contact_type)
 
 
 
-class AutoActivator {
-
-    const ACTIVATION_KEY = 'b3JkZXJfaWQ9NzYwMzB8dHlwZT1wZXJzb25hbHxkYXRlPTIwMTYtMDItMjYgMjM6MDY6MDU=';
-
-    /**
-     * AutoActivator constructor.
-     * This will update the license field option on acf
-     * Works only on backend to not attack performance on frontend
-     */
-    public function __construct() {
-      if (
-        function_exists( 'acf' ) &&
-          is_admin() &&
-        !acf_pro_get_license_key()
-      ) {
-        acf_pro_update_license(self::ACTIVATION_KEY);
-      }
-    }
-
-  }
-
-       new AutoActivator();
-
-
